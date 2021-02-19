@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Counter from "./components/Counter";
+import MyForm from "./components/MyForm";
+import ReducerSample from "./components/ReducerSample";
+import { SampleProvider } from "./components/SampleContext";
 
-function App() {
+const App: React.FC = () => {
+  const onSubmit = (form: { name: string; description: string }) => {
+    console.log(form);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Counter />
+      <MyForm onSubmit={onSubmit} />
+      <SampleProvider>
+        <ReducerSample />
+      </SampleProvider>
+    </>
   );
-}
+};
 
 export default App;
